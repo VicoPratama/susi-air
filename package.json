@@ -1,0 +1,22 @@
+{
+  "name": "susi-air-pilot-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Susi Air Fullstack Developer Technical Test - Pilot Crew App (Nuxt 3 + NestJS)",
+  "scripts": {
+    "dev": "npm --prefix nuxt run dev",
+    "dev:nuxt": "npm --prefix nuxt run dev",
+    "dev:nest": "npm --prefix nest run start:dev",
+    "build:nuxt": "npm --prefix nuxt run build",
+    "build:nest": "npm --prefix nest run build"
+  },
+  "keywords": [
+    "susi-air",
+    "nuxt3",
+    "nestjs",
+    "vue3",
+    "pinia"
+  ],
+  "author": "Susi Air Candidate",
+  "license": "UNLICENSED"
+}

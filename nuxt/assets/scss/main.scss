@@ -1,0 +1,171 @@
+@use './variables' as *;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  font-family: $font-family-base;
+  background-color: #0E2138;
+  color: $color-text-primary;
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Mobile app viewport wrapper
+.app-container {
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: $color-bg;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding-bottom: 84px; // room for bottom nav
+  overflow-y: auto;
+}
+
+// Common UI Elements
+.card {
+  background: $color-card;
+  border-radius: $radius-lg;
+  border: 1px solid $color-card-border;
+  box-shadow: $shadow-card;
+  padding: 16px;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: $color-brand-red;
+  color: $color-text-light;
+  font-weight: 600;
+  border-radius: $radius-pill;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color $transition-fast, transform $transition-fast, box-shadow $transition-fast;
+  box-shadow: 0 4px 12px rgba(230, 55, 87, 0.28);
+
+  &:hover:not(:disabled) {
+    background-color: $color-brand-red-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(230, 55, 87, 0.35);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: rgba(14, 33, 56, 0.06);
+  color: $color-primary-navy;
+  font-weight: 600;
+  border-radius: $radius-pill;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: rgba(14, 33, 56, 0.12);
+  }
+}
+
+// Expiry Badges
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: $radius-pill;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  &.badge-safe {
+    background-color: $color-success-light;
+    color: #0d8a64;
+    border: 1px solid rgba(31, 191, 143, 0.3);
+  }
+
+  &.badge-soon {
+    background-color: $color-warning-light;
+    color: #b45309;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  &.badge-expired {
+    background-color: $color-danger-light;
+    color: $color-danger;
+    border: 1px solid rgba(230, 55, 87, 0.3);
+  }
+}
+
+// Numerical bold helper
+.num-bold {
+  font-family: $font-family-base;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+// Skeleton loading
+.skeleton {
+  background: linear-gradient(90deg, #eceff3 25%, #f7f9fa 50%, #eceff3 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $radius-sm;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 33, 56, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 33, 56, 0.25);
+}
