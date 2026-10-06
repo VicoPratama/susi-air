@@ -82,9 +82,7 @@ import { useAuthStore } from '~/stores/auth'
 const authStore = useAuthStore()
 
 function handleLogout() {
-  if (confirm('Confirm sign out?')) {
-    authStore.logout()
-  }
+  authStore.promptLogout()
 }
 </script>
 

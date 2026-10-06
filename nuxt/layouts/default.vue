@@ -21,6 +21,9 @@
 
     <!-- Bottom Navigation -->
     <BottomNav v-if="authStore.isAuthenticated && showBottomNav" />
+
+    <!-- Global Logout Confirmation Modal -->
+    <LogoutModal />
   </div>
 </template>
 

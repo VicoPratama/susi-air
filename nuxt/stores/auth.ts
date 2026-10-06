@@ -12,6 +12,7 @@ export const useAuthStore = defineStore('auth', () => {
   const profile = ref<PilotProfile | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
+  const showLogoutModal = ref(false)
 
   const isAuthenticated = computed(() => !!token.value)
 
@@ -66,6 +67,19 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  function promptLogout() {
+    showLogoutModal.value = true
+  }
+
+  function cancelLogout() {
+    showLogoutModal.value = false
+  }
+
+  function confirmLogout() {
+    showLogoutModal.value = false
+    logout()
+  }
+
   function logout() {
     token.value = null
     user.value = null
@@ -79,9 +93,13 @@ export const useAuthStore = defineStore('auth', () => {
     profile,
     isLoading,
     error,
+    showLogoutModal,
     isAuthenticated,
     login,
     fetchProfile,
+    promptLogout,
+    cancelLogout,
+    confirmLogout,
     logout
   }
 })
